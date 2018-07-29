@@ -7,16 +7,16 @@
 }
 
 .avatar-doctor {
-  border: 1px solid $border-doctor;
+  border: 1px solid $doctor_border_color;
   border-radius: 10px;
   max-width: 70%;
   width: 100%;
   height: auto;
-  box-shadow: 2px 3px 1px $box-doctor;
+  box-shadow: 2px 3px 1px $box_doctor_color;
   transition: all ease-in-out 0.35s;
   padding: 7px;
   &:hover {
-    box-shadow: 1px 6px 9px 0 $box-shadow-doctor;
+    box-shadow: 1px 6px 9px 0 $box_shadow_doctor;
   }
 }
 
