@@ -59,8 +59,7 @@
                       <li>
                         <h6><%= t ".address" %></h6>
                         <%= @user.prof_place %> -
-                        <%= link_to
-                          "https://www.google.com/maps/dir/#{@user.prof_place}",
+                        <%= link_to "https://www.google.com/maps/dir/#{@user.prof_place}",
                           target: "_blank" do %>
                             <strong><%= t (".view_on_map") %></strong>
                         <% end %>
