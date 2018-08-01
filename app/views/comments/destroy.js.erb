@@ -1,0 +1,4 @@
+$('#count-comment-<%= @comment.question.id %>')
+  .text(<%= @comment.question.answers.count %>)
+$('#comment-<%= @comment.id %>').remove()
+

@@ -4,6 +4,16 @@
     <div class="content">
       <h3> <%= t "global.logo" %></h3>
       <p><%= t "global.slogan"%></p>
+      <form method="post" action="">
+        <div id="custom-search-input">
+          <div class="input-group">
+            <input type="text" class="search-query"
+              placeholder="<%= t "global.menu.search_placeholder"%>"/>
+            <input type="submit" class="btn_search"
+              value="<%= t "global.menu.search"%>"/>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </main>

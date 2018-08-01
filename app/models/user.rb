@@ -22,10 +22,6 @@ class User < ApplicationRecord
     length: {minimum: Settings.user.password_minimum_length},
     allow_nil: true
 
-  def current_user? user
-    self == user
-  end
-
   def remember
     @remember_token = User.new_token
     update_attributes remember_digest: User.digest(remember_token)
@@ -57,6 +53,10 @@ class User < ApplicationRecord
 
   def password_reset_expired?
     reset_sent_at < Settings.user.password_reset_expired.hours.ago
+  end
+
+  def current_user? user
+    self == user
   end
 
   class << self
