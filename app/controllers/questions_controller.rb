@@ -3,6 +3,11 @@ class QuestionsController < ApplicationController
 
   def index; end
 
+  def show
+    @question = Question.find_by id: params[:id]
+    redirect_to questions_url unless @question.present?
+  end
+
   def create
     new_question = current_user.questions.build question_params
     if new_question.save
@@ -24,8 +29,8 @@ class QuestionsController < ApplicationController
     render :index
   end
 
-  private
 
+  private
   def question_params
     params.require(:question).permit :content, :category_ids
   end
