@@ -6,11 +6,11 @@
 
 @font-face {
   font-family: fontello;
-  src: url('fontello_678ef44b.eot');
-  src: url('fontello_678ef44b.eot') format('embedded-opentype'),
-    url('fontello_678ef44b.woff') format('woff'),
-    url('fontello_678ef44b.ttf') format('truetype'),
-    url('fontello_678ef44b.svg') format('svg');
+  src: url(font_path('fontello_678ef44b.eot'));
+  src: url(font_path('fontello_678ef44b.eot')) format('embedded-opentype'),
+  url(font_path('fontello_678ef44b.woff')) format('woff'),
+  url(font_path('fontello_678ef44b.ttf')) format('truetype'),
+  url(font_path('fontello_678ef44b.svg')) format('svg');
   font-weight: 400;
   font-style: normal
 }

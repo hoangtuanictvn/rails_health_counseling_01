@@ -14,7 +14,7 @@ major_list.each do |ele|
 end
 
 User.create!(name: "Admin",
-  phone_number: "01639639540",
+  phone_number: "01639639691",
   admin: true,
   avatar: "avatar.jpg",
   prof_place: "Viet Nam",

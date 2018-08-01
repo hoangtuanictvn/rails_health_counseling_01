@@ -19,6 +19,6 @@ module MfCare
     config.i18n.available_locales = [:en, :vi]
     config.i18n.default_locale = :vi
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts")
-    config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
+    config.assets.precompile << /\.(?:svg|eot|woff|ttf|png|jpeg|jpg)$/
   end
 end
