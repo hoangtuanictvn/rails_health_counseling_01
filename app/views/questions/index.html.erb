@@ -128,8 +128,11 @@
               </figure>
               <h5><%= item.user.name %></h5>
               <p class="content">
-                <%= item.content %>
-                <%= link_to t(".view_more"), question_url(item) %>
+                <%= truncate item.content,
+                  length: Settings.question.feed_ct_len %>
+                <% if item.content.length > Settings.question.feed_ct_len %>
+                  <%= link_to t(".view_more"), question_url(item) %>
+                <% end %>
               </p>
               <small>
                 <%= item.categories.map(&:name).join ", " %>

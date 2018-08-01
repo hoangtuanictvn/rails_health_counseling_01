@@ -25,7 +25,9 @@ class UsersController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    @user = User.find_by id: params[:id]
+  end
 
   def update
     if @user.update_attributes user_params
@@ -41,7 +43,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user)
-          .permit :name, :email, :password, :password_confirmation
+          .permit :name, :email, :password, :password_confirmation, :avatar
   end
 
   def find_user

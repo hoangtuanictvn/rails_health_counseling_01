@@ -74,6 +74,10 @@ class User < ApplicationRecord
     reset_sent_at < Settings.user.password_reset_expired.hours.ago
   end
 
+  def current_user? user
+    self == user
+  end
+
   class << self
     def digest string
       cost = if ActiveModel::SecurePassword.min_cost

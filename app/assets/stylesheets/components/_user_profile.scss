@@ -105,6 +105,7 @@
   bottom: 0;
   left: 15px;
   right: 0;
+  cursor: pointer;
   display: block;
   position: absolute;
   border-radius: 10px;
@@ -131,4 +132,8 @@
   max-width: 70%;
   max-height: 70%;
   padding-top: 10px;
+}
+
+.user_avatar{
+  display: none;
 }
