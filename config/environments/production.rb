@@ -41,6 +41,10 @@ Rails.application.configure do
 
   config.log_formatter = ::Logger::Formatter.new
 
+  config.assets.js_compressor = :uglifier
+  config.assets.css_compressor = :sass
+  config.assets.digest = true
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter

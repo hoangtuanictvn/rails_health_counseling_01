@@ -12,8 +12,8 @@
               <h3><%= @user.name %></h3>
               <small><%= @user.email %></small>
               <ul class="statistic">
-                <li>10 <%= t ".questions" %></li>
-                <li>124 <%= t ".comments" %></li>
+                <li><%= @user.questions.count %> <%= t ".questions" %></li>
+                <li><%= @user.answers.count %> <%= t ".comments" %></li>
               </ul>
             </div>
           </div>
@@ -35,12 +35,12 @@
               <li>
                 <%= link_to t(".general_info"), "#info",
                   class: "active nav-link", id: "info-tab",
-                  data: {toggle:"tab"}, aria: {controls: "info"}  %>
+                  data: { toggle:"tab" }, aria: { controls: "info" }  %>
               </li>
               <li>
                 <%= link_to t(".all_questions"), "#question",
                   class: "nav-link", id: "question-tab",
-                  data: {toggle:"tab"}, aria: {controls: "question"}  %>
+                  data: { toggle:"tab" }, aria: { controls: "question" }  %>
               </li>
             </ul>
             </ul>
@@ -61,7 +61,7 @@
                         <%= @user.prof_place %> -
                         <%= link_to "https://www.google.com/maps/dir/#{@user.prof_place}",
                           target: "_blank" do %>
-                            <strong><%= t (".view_on_map") %></strong>
+                          <strong><%= t (".view_on_map") %></strong>
                         <% end %>
                       </li>
                       <li>

@@ -1,61 +1,46 @@
 class CommentsController < ApplicationController
+  before_action :check_login, only: [:create, :edit, :update, :destroy]
+  before_action :find_comment, only: [:edit, :update, :destroy]
+
   def create
-    if logged_in?
-      @comment = Answer.new comment_params
-      if @comment.save
-        respond_to do |format|
-          format.js
-        end
-      else
-        flash[:warning] = t ".unsucess"
+    @comment = Answer.new comment_params
+    if @comment.save
+      respond_to do |format|
+        format.js
       end
     else
-      flash[:warning] = t "global.message.please_login_to_comment"
+      flash[:warning] = t ".unsucess"
     end
   end
 
   def edit
-    if logged_in?
-      @rawcomment = Answer.find_by id: params[:id]
-      if !@rawcomment.nil?
-        respond_to do |format|
-          format.js
-        end
-      else
-        flash[:warning] = t ".unsucess"
-      end
-    else
-      flash[:warning] = t "global.message.please_login_to_edit_comment"
+    return unless @rawcomment.present?
+    respond_to do |format|
+      format.js
     end
   end
 
   def update
-    @rawcomment = Answer.find_by id: params[:id]
-    if logged_in?
-      if @rawcomment.update_attributes content: params[:comments][:content]
-        respond_to do |format|
-          format.js
-        end
-      else
-        flash[:warning] = t ".unsucess"
+    return unless @rawcomment.present?
+    if @rawcomment.update_attributes content: params[:comments][:content]
+      respond_to do |format|
+        format.js
       end
+      flash[:warning] = t ".sucess"
     else
-      flash[:warning] = t "global.message.please_login_to_delete"
+      flash[:warning] = t ".unsucess"
     end
   end
 
   def destroy
-    if logged_in?
-      @comment = Answer.find_by id: params[:id]
-      if @comment.delete
-        respond_to do |format|
-          format.js
-        end
-      else
-        flash[:warning] = t ".unsucess"
+    return unless @rawcomment.present?
+    if @rawcomment.delete
+      respond_to do |format|
+        format.js
       end
+      flash[:warning] = t ".sucess"
     else
-      flash[:warning] = t "global.message.please_login_to_delete"
+      flash[:warning] = t ".unsucess"
     end
   end
 
@@ -63,5 +48,16 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comments)
           .permit :content, :user_id, :question_id
+  end
+
+  def check_login
+    return if logged_in?
+    flash[:warning] = t "global.message.please_login_to_acction"
+    redirect_to questions_path
+  end
+
+  def find_comment
+    @rawcomment = Answer.find_by id: params[:id]
+    flash[:warning] = t ".cant_delete_this_comment" unless @rawcomment.present?
   end
 end

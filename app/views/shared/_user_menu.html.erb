@@ -1,8 +1,10 @@
 <% if logged_in? %>
   <li class="submenu">
-    <a href="#" class="show-submenu avatar_link">
+    <%= link_to "#" ,
+      class:"show-submenu avatar_link",
+      data: { turbolinks: false } do %>
       <%= image_tag user_avatar(@current_user), class: "user_menu--avatar" %>
-    </a>
+    <% end %>
     <ul class="user_menu--custom">
       <div class="dropdown-caret right">
         <span class="caret-outer"></span>

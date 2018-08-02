@@ -3,7 +3,6 @@ class AnswersController < ApplicationController
     @answer = Answer.new answer_params
     if @answer.save
       respond_to do |format|
-        format.html{redirect_to book_review_rate_path @review.book, @review}
         format.js
       end
     else
@@ -16,7 +15,7 @@ class AnswersController < ApplicationController
     if @answer
       @answer.delete
     else
-      flash[:warning] = "Can't find this answer for delete"
+      flash[:warning] = t ".cant_delete"
     end
   end
 

@@ -10,8 +10,12 @@ user:
   gravatar_size_follow: 30
 default:
   avatar: logo.png
+  doctor_image: doctor_default.png
 doctor:
   right_column: 0
+  activate: activate
+  block: block
+  unblock: unblock
 admin:
   truncate_length: 50
   item_per_page: 10
