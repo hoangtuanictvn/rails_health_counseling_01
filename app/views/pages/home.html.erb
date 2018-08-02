@@ -4,16 +4,22 @@
     <div class="content">
       <h3> <%= t "global.logo" %></h3>
       <p><%= t "global.slogan"%></p>
-      <form method="post" action="">
-        <div id="custom-search-input">
-          <div class="input-group">
-            <input type="text" class="search-query"
-              placeholder="<%= t "global.menu.search_placeholder"%>"/>
-            <input type="submit" class="btn_search"
-              value="<%= t "global.menu.search"%>"/>
+      <div class="mf_search--main">
+        <%= form_for :search,
+          url: searchs_path do |f|%>
+          <div id="custom-search-input">
+            <div class="input-group">
+              <%= f.text_field :query, class: "search-query mf_auto_complete",
+                placeholder: t("global.menu.search_placeholder"),
+                autocomplete: "off" %>
+                <div class="mf_search--suggest">
+                  <ul class="mf_search--autocomplete"></ul>
+                </div>
+              <%= f.submit t("global.menu.search"), class: "btn_search" %>
+            </div>
           </div>
-        </div>
-      </form>
+        <% end %>
+      </div>
     </div>
   </div>
 </main>
