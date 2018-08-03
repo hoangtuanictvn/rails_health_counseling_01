@@ -1,4 +1,5 @@
 <main>
+
   <div id="hero_register">
     <div class="container margin_120_95">
       <div class="row">
@@ -69,7 +70,7 @@
                     <%= f.label :major, t(".major") %>
                     <%= f.select :majors,
                       options_for_select(@all_majors, @current_majors),
-                      {}, {multiple: true} %>
+                      {}, {multiple: true, id: "select-major"} %>
                   </div>
                 </div>
               </div>

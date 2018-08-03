@@ -1,0 +1,7 @@
+<% if !current_user&.doctor_activated? && current_user&.type == "Doctor" %>
+  <div id="cookie-bar" class="fixed bottom">
+    <%= link_to edit_doctor_path(current_user) do %>
+      <p><%= t "doctors.edit.need_activate" %></p>
+    <% end %>
+  </div>
+<% end %>

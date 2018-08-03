@@ -24,6 +24,8 @@ class User < ApplicationRecord
     length: {minimum: Settings.user.password_minimum_length},
     allow_nil: true
 
+  scope :exclude_doctor, -> {where.not type: "Doctor"}
+
   scope :search, (lambda do |keyword|
     keyword = keyword.to_s.strip
     where "name LIKE ? ", "%#{sanitize_sql_like keyword}%" unless keyword.blank?

@@ -14,4 +14,5 @@
 //= require BsMultiSelect
 //= require functions.mf
 //= require cable
+//= require doctor
 //= require channels/notifications

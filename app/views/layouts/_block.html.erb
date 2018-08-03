@@ -1,0 +1,5 @@
+<% if current_user&.blocked %>
+  <div id="cookie-bar" class="fixed bottom">
+    <p><%= t "global.blocked" %></p>
+  </div>
+<% end %>

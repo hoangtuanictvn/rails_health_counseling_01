@@ -15,6 +15,14 @@
             <li><%= t ".asked", count: @questions.length %></li>
             <li><%= t".answer", count: @doctor.answers.count %></li>
           </ul>
+          <% if current_user.current_user? @doctor %>
+            <div class="text-center">
+              <%= link_to edit_doctor_path(@doctor),
+                class: "btn_1 outline" do %>
+                  <i class="fa fa-user-edit"></i><%= t "doctors.edit.title" %>
+              <% end %>
+            </div>
+          <% end %>
           <ul class="contacts">
             <li><h6><%= t ".address" %></h6><%= @doctor.address %></li>
             <li><h6><%= t ".phone" %></h6>
