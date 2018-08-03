@@ -13,6 +13,9 @@
                   <%= f.text_field :name, class: "form-control",
                     placeholder: t(".your_name") %>
                 </div>
+                <% if @user.errors[:name].present? %>
+                  <div><%= @user.errors[:name][0] %></div>
+                <% end %>
                 <div class="form-group">
                   <%= f.label :email, t(".email") %>
                   <%= f.email_field :email, class: "form-control",

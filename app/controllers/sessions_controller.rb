@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:session][:password])
       activate_check user
     else
-      flash.now[:danger] = t "sessions.new.error"
+      flash.now[:message] = t "sessions.new.error"
       render :new
     end
   end
