@@ -5,6 +5,7 @@
 //= require wow
 //= require owl.carousel
 //= require lodash
+//= require sweetalert.min
 //= require functions
 //= require activestorage
 //= require bootstrap-datepicker/core

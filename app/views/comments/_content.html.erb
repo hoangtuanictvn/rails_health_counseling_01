@@ -13,8 +13,9 @@
       class: "mf_comment--edit comment-#{comment.id}",
       data: {id: comment.id},
       remote: true %>
-    <%= link_to t(".delete"), comment_url(comment),
-      method: :delete,
+    <%= link_to t(".delete"), "#",
+      class: "mf_comment--delete comment-#{comment.id}",
+      data: {id: comment.id},
       remote: true %>
   <% end %>
 </div>

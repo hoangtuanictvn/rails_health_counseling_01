@@ -24,18 +24,11 @@ class User < ApplicationRecord
     length: {minimum: Settings.user.password_minimum_length},
     allow_nil: true
 
-<<<<<<< HEAD
   scope :search, (lambda do |keyword|
     keyword = keyword.to_s.strip
     where "name LIKE ? ", "%#{sanitize_sql_like keyword}%" unless keyword.blank?
   end)
 
-  def current_user? user
-    self == user
-  end
-
-=======
->>>>>>> Make question #3
   def remember
     @remember_token = User.new_token
     update_attributes remember_digest: User.digest(remember_token)
