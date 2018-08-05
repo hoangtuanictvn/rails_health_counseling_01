@@ -20,8 +20,8 @@ class AnswersController < ApplicationController
   end
 
   private
+
   def answer_params
-    params.require(:answer)
-          .permit :content, :user_id, :question_id
+    params.require(:answer) .permit :content, :user_id, :question_id
   end
 end

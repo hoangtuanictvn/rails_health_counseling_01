@@ -3,6 +3,11 @@ class QuestionsController < ApplicationController
 
   def index; end
 
+  def show
+    @question = Question.find_by id: params[:id]
+    redirect_to questions_url unless @question.present?
+  end
+
   def create
     new_question = current_user.questions.build question_params
     if new_question.save
@@ -32,7 +37,7 @@ class QuestionsController < ApplicationController
   def fetch_data
     @question = current_user.questions.build if logged_in?
     @majors = Major.pluck :name, :id
-    if params[:major_id].nil?
+    unless params[:major_id]
       return @question_feeds = Question.order(created_at: :desc)
                                        .page(params[:page])
     end

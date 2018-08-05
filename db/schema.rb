@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_07_30_083140) do
+=======
+ActiveRecord::Schema.define(version: 2018_08_02_043321) do
+>>>>>>> search_tmp
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,17 +51,24 @@ ActiveRecord::Schema.define(version: 2018_07_30_083140) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
   create_table "notifications", force: :cascade do |t|
     t.bigint "user_id"
+=======
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "sender_id"
+>>>>>>> search_tmp
     t.bigint "question_id"
     t.bigint "major_id"
     t.boolean "checked"
-    t.integer "type"
+    t.integer "notification_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "read"
+    t.integer "receiver_id"
     t.index ["major_id"], name: "index_notifications_on_major_id"
     t.index ["question_id"], name: "index_notifications_on_question_id"
-    t.index ["user_id"], name: "index_notifications_on_user_id"
+    t.index ["sender_id"], name: "index_notifications_on_sender_id"
   end
 
   create_table "question_categories", force: :cascade do |t|
@@ -113,7 +124,7 @@ ActiveRecord::Schema.define(version: 2018_07_30_083140) do
   add_foreign_key "doctor_majors", "users"
   add_foreign_key "notifications", "majors"
   add_foreign_key "notifications", "questions"
-  add_foreign_key "notifications", "users"
+  add_foreign_key "notifications", "users", column: "sender_id"
   add_foreign_key "question_categories", "majors"
   add_foreign_key "question_categories", "questions"
   add_foreign_key "questions", "users"

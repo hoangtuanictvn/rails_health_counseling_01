@@ -4226,3 +4226,7 @@ div.datedropper.primary .pick-y.pick-jump {
 .hover-shadow{
   @include shadow-card-hover(0.22);
 }
+
+.page-full-height{
+  height: 100vh;
+}

@@ -52,12 +52,12 @@ class CommentsController < ApplicationController
 
   def check_login
     return if logged_in?
-    flash[:warning] = t "global.message.please_login_to_acction"
+    flash[:warning] = t "global.message.please_login_action"
     redirect_to questions_path
   end
 
   def find_comment
     @rawcomment = Answer.find_by id: params[:id]
-    flash[:warning] = t ".cant_delete_this_comment" unless @rawcomment.present?
+    redirect_to questions_path unless @rawcomment.present?
   end
 end

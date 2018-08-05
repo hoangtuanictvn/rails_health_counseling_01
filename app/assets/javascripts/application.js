@@ -1,5 +1,6 @@
 //= require jquery2
 //= require popper
+//= require bootstrap
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require wow
@@ -11,3 +12,5 @@
 //= require turbolinks
 //= require BsMultiSelect
 //= require functions.mf
+//= require cable
+//= require channels/notifications

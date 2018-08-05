@@ -19,6 +19,15 @@ doctor:
 admin:
   truncate_length: 50
   item_per_page: 10
+  doctor:
+    activate: activate
+  block: block
+  unblock: unblock
+  per_page: 5
+question:
+  cate_len: 10
+default_page: 1
+default_load_more: 2
 home:
   suggest_text_len: 100
   suggest_limit: 10
