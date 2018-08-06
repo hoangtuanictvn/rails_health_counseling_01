@@ -22,6 +22,7 @@ class DoctorsController < ApplicationController
     major_ids = params[:doctor][:majors]
     major_ids.shift
     @doctor.add_majors major_ids
+    redirect_to @doctor
   end
 
   private

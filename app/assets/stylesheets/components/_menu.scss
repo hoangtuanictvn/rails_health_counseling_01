@@ -213,6 +213,18 @@
   .main-menu ul li:hover .menu-wrapper,
   .main-menu ul li:hover>ul {
     padding: 0;
+    display: block;
+    visibility: visible;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1
+  }
+  .main-menu ul li:hover>ul.hidden{
+    padding: 0;
+    display: none;
     visibility: visible;
     -webkit-transform: translateY(0);
     -moz-transform: translateY(0);

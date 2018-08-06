@@ -1,3 +1,3 @@
 $(document).on('turbolinks:load', function () {
-  $('select').dashboardCodeBsMultiSelect();
+  $('#select-major').dashboardCodeBsMultiSelect();
 });

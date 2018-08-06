@@ -12,7 +12,7 @@
         <div class="main-menu">
           <ul>
             <% if logged_in? %>
-              <li class="submenu dropdown">
+              <li>
                 <a rel="nofollow" data-target="#" href="#"
                    data-toggle="dropdown" aria-haspopup="true"
                    aria-expanded="false" class="nav-link">
@@ -21,7 +21,8 @@
                     <%= current_user.notifications.length %>
                   </span>
                 </a>
-                <ul id="notifications" aria-labelledby="notifications" class="dropdown-menu">
+                <ul id="notifications" aria-labelledby="notifications"
+                  class="dropdown-menu">
                   <% current_user.notifications.each do |notification| %>
                     <%= render "notifications/notification", notification: notification %>
                   <% end %>

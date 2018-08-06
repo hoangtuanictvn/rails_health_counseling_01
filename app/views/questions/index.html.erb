@@ -171,28 +171,25 @@
                 <% end %>
               </div>
               <% if logged_in? %>
-                <% if current_user.type == "Doctor" &&
-                  current_user.doctor_activated? == true %>
-                  <div class="mf_main--reply" id="question-<%= item.id %>">
-                  <%= form_for :comments,
-                    url: comments_path,
-                    method: :post,
-                    remote: true do |f| %>
-                    <%= image_tag user_avatar(@current_user),
-                      class: "mf_reply--avatar" %>
-                    <div class="form-group mf_reply_form">
-                      <%= f.hidden_field :question_id, value: item.id %>
-                      <%= f.hidden_field :user_id, value: @current_user.id %>
-                      <%= f.text_field :content,
-                        class: "form-control mf_reply_field question-#{item.id}",
-                        placeholder: t("messages.post_comment_placeholder") %>
-                      <%= f.submit t(".comment"),
-                        class: "mf_reply_button question-#{item.id}",
-                        data: {id: item.id} %>
-                    </div>
-                  <% end %>
-                </div>
+                <div class="mf_main--reply" id="question-<%= item.id %>">
+                <%= form_for :comments,
+                  url: comments_path,
+                  method: :post,
+                  remote: true do |f| %>
+                  <%= image_tag user_avatar(@current_user),
+                    class: "mf_reply--avatar" %>
+                  <div class="form-group mf_reply_form">
+                    <%= f.hidden_field :question_id, value: item.id %>
+                    <%= f.hidden_field :user_id, value: @current_user.id %>
+                    <%= f.text_field :content,
+                      class: "form-control mf_reply_field question-#{item.id}",
+                      placeholder: t("messages.post_comment_placeholder") %>
+                    <%= f.submit t(".comment"),
+                      class: "mf_reply_button question-#{item.id}",
+                      data: {id: item.id} %>
+                  </div>
                 <% end %>
+              </div>
               <% end %>
             </div>
           <% end %>
