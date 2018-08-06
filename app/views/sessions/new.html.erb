@@ -12,6 +12,9 @@
               <%= link_to t(".lk_login"), "#", class: "social_bt linkedin" %>
             </div>
             <div class="box_login last">
+              <% if flash[:message] %>
+                <div class="alert alert-danger"><%= flash[:message] %></div>
+              <% end %>
               <div class="form-group">
                 <%= f.email_field :email,
                   class: "form-control", placeholder: t(".your_email") %>
