@@ -77,6 +77,7 @@ en:
       update: Update
       comments: comments
       comment: Comment
+      signup_for_post_question: Signup now to make us some question!
     show:
       edit: Edit
       delete: Delete

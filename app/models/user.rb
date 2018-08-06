@@ -29,10 +29,6 @@ class User < ApplicationRecord
     where "name LIKE ? ", "%#{sanitize_sql_like keyword}%" unless keyword.blank?
   end)
 
-  def current_user? user
-    self == user
-  end
-
   def remember
     @remember_token = User.new_token
     update_attributes remember_digest: User.digest(remember_token)

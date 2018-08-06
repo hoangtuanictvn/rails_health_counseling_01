@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2018_07_30_083140) do
-=======
 ActiveRecord::Schema.define(version: 2018_08_02_043321) do
->>>>>>> search_tmp
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,13 +47,8 @@ ActiveRecord::Schema.define(version: 2018_08_02_043321) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   create_table "notifications", force: :cascade do |t|
-    t.bigint "user_id"
-=======
-  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "sender_id"
->>>>>>> search_tmp
     t.bigint "question_id"
     t.bigint "major_id"
     t.boolean "checked"
@@ -116,7 +107,7 @@ ActiveRecord::Schema.define(version: 2018_08_02_043321) do
     t.boolean "request_doctor"
     t.boolean "doctor_activated"
     t.boolean "recommend"
-    t.integer "block_status"
+    t.boolean "integer"
   end
 
   add_foreign_key "answers", "questions"

@@ -90,7 +90,7 @@
             <% end %>
           <% else %>
             <div class="signup_require">
-              <h4><% t ".signup_for_post_question" %></h4>
+              <h4><%= t ".signup_for_post_question" %></h4>
               <%= link_to t(".signup"), signup_path, class: "btn_signup" %>
             </div>
           <% end %>
@@ -128,7 +128,7 @@
               </figure>
               <h5><%= item.user.name %></h5>
               <p class="content">
-                <%= item.content %>
+                <%= truncate item.content, length: 150 %>
                 <%= link_to t(".view_more"), question_url(item) %>
               </p>
               <small>

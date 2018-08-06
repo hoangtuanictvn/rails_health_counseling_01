@@ -4,15 +4,18 @@
 </div>
 <div class="mf_comment--answer_time">
   <small class="post_time">
-    <%= time_ago_in_words comment.created_at %> <%= t ".ago" %>
+    <%= time_ago_in_words comment.created_at %> <%= t ".ago"%>
   </small>
 </div>
 <div class="mf_comment--menu">
-  <% if comment.user.current_user? current_user %>
+  <% if current_user == comment.user %>
     <%= link_to t(".edit"), edit_comment_url(comment),
-      class: "mf_comment--edit comment-#{comment.id}", data: {id: comment.id},
+      class: "mf_comment--edit comment-#{comment.id}",
+      data: {id: comment.id},
       remote: true %>
-    <%= link_to t(".delete"), comment_url(comment), method: :delete,
+    <%= link_to t(".delete"), "#",
+      class: "mf_comment--delete comment-#{comment.id}",
+      data: {id: comment.id},
       remote: true %>
   <% end %>
 </div>
