@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user.type = :Doctor if @user.request_doctor = request_doctor_check
     if @user.save
       @user.send_mail :account_activation
-      @messages = [t("users.create.thank"), t("users.create.email_sent")]
+      flash.now[:message] = t("users.create.email_sent")
       render "shared/confirm"
     else
       render :new
