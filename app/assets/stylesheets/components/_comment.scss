@@ -91,6 +91,10 @@
   }
 }
 
+.thanked {
+  font-weight: bold;
+}
+
 .mf_main--reply{
   position: relative;
   margin-top: 10px;
@@ -112,7 +116,7 @@
     height: 36px;
     border-radius: 20px;
     float: left;
-    border: 1px solid aliceblue;
+    border: 2px solid #3f4079a8;
   }
 
   .mf_reply_form{
