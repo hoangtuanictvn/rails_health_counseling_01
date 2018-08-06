@@ -1,3 +1,5 @@
+<%= provide :title, truncate(@question.content,
+  length: Settings.question.feed_title_len) %>
 <main class="page-full-height">
   <div class="container margin_60_35">
     <div class="row">
@@ -35,7 +37,6 @@
             <h5><%= @question.user.name %></h5>
             <p class="content">
               <%= @question.content %>
-              <%= link_to t(".view_more"), question_url(@question) %>
             </p>
             <small>
               <%= @question.categories.map(&:name).join ", " %>

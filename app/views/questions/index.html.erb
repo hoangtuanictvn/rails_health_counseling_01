@@ -128,8 +128,11 @@
               </figure>
               <h5><%= item.user.name %></h5>
               <p class="content">
-                <%= truncate item.content, length: 150 %>
-                <%= link_to t(".view_more"), question_url(item) %>
+                <%= truncate item.content,
+                  length: Settings.question.feed_ct_len %>
+                <% if item.content.length > Settings.question.feed_ct_len %>
+                  <%= link_to t(".view_more"), question_url(item) %>
+                <% end %>
               </p>
               <small>
                 <%= item.categories.map(&:name).join ", " %>
@@ -168,7 +171,9 @@
                 <% end %>
               </div>
               <% if logged_in? %>
-                <div class="mf_main--reply" id="question-<%= item.id %>">
+                <% if current_user.type == "Doctor" &&
+                  current_user.doctor_activated? == true %>
+                  <div class="mf_main--reply" id="question-<%= item.id %>">
                   <%= form_for :comments,
                     url: comments_path,
                     method: :post,
@@ -187,6 +192,7 @@
                     </div>
                   <% end %>
                 </div>
+                <% end %>
               <% end %>
             </div>
           <% end %>
