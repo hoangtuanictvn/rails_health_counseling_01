@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   get "password_resets/edit"
   get "pages/:page" => "pages#show"
   resources :users
-  resources :doctors
+
+  resources :doctors do
+    resources :schedules, only: [:index]
+  end
+
   resources :account_activations, only: [:edit]
   resource :likes, only: [:create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
@@ -19,6 +23,7 @@ Rails.application.routes.draw do
   resources :answers, only: [:index, :create, :destroy]
   resources :comments, only: [:create, :edit, :destroy, :update]
   resources :searchs, only: [:index, :show]
+  resources :bookings
 
   namespace :admin do
     get "/", to: "dashboards#index"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_10_014142) do
+ActiveRecord::Schema.define(version: 2018_08_14_115624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,22 @@ ActiveRecord::Schema.define(version: 2018_08_10_014142) do
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.string "title"
+    t.integer "user_id"
+    t.integer "doctor_id"
+    t.integer "category_id"
+    t.datetime "start_time"
+    t.datetime "stop_time"
+    t.boolean "accept"
+    t.string "reason"
+    t.string "state"
+    t.string "location"
+    t.string "schedule_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "doctor_majors", force: :cascade do |t|
