@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale
   include UsersHelper
+  include ConversationsHelper
 
   def logged_in_user
     return if user_signed_in?

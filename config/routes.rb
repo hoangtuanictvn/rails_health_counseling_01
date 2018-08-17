@@ -24,6 +24,12 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :edit, :destroy, :update]
   resources :searchs, only: [:index, :show]
   resources :bookings
+  resources :conversations do
+    member do
+      post :close
+    end
+    resources :messages
+  end
 
   namespace :admin do
     get "/", to: "dashboards#index"

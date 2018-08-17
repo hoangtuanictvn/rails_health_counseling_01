@@ -82,6 +82,7 @@ $(document).on('turbolinks:load', function () {
 
   $('.mf_auto_complete').on('input', _.debounce(showQuery, 1000,
     { 'maxWait': 1000 }));
+
   var wowAnimation = new WOW({
     boxClass: 'wow',
     animateClass: 'animated',
@@ -99,7 +100,10 @@ $(document).on('turbolinks:load', function () {
     }
   });
 
-  initCalendar();
+  if($('#calendar').length > 0)
+    initCalendar();
+
+  initConversationEvents($('.chat_header'))
 });
 
 function removeContentReply(id) {
@@ -472,8 +476,11 @@ function initCalendar(){
           iconClassName = 'calendar-icon ic_view_month';
       }
 
-      calendarTypeName.innerHTML = type;
-      calendarTypeIcon.className = iconClassName;
+      if(calendarTypeName)
+        calendarTypeName.innerHTML = type;
+
+      if(calendarTypeIcon)
+        calendarTypeIcon.className = iconClassName;
   }
 
   function setRenderRangeText() {
@@ -491,6 +498,7 @@ function initCalendar(){
           html.push(' ~ ');
           html.push(moment(cal.getDateRangeEnd().getTime()).format(' MM.DD'));
       }
+      if(renderRange)
       renderRange.innerHTML = html.join('');
   }
 
@@ -515,7 +523,6 @@ function initCalendar(){
     $('#btn-new-schedule').on('click', createNewSchedule);
     $('#dropdownMenu-calendars-list').on('click', onChangeNewScheduleCalendar);
     window.addEventListener('resize', resizeThrottled);
-    window.addEventListener('onload', resizeThrottled);
   }
 
   function getDataAction(target) {
@@ -740,4 +747,33 @@ function refreshcalendar(calendar){
   calendar.clear()
   calendar.createSchedules(ScheduleList);
   cal.render(true);
+}
+
+function initConversationEvents(conversations){
+  conversations.each(function(){
+    initConversationEvent($(this))
+  })
+}
+
+function initConversationEvent(chatFrame){
+  chatFrame.on('click',function(event){
+    var id = $(this).parents('.chat_frame').data('conversation-id')
+    toggleChatContent(id)
+  });
+}
+
+function toggleChatContent(id){
+  var chatContent = $('.chat_content-'+id);
+  if(chatContent.hasClass('show')){
+    chatContent.removeClass('show')
+  } else {
+    chatContent.addClass('show')
+  }
+}
+
+function showChatContent(id){
+  var chatContent = $('.chat_content-'+id);
+  if(!chatContent.hasClass('show')){
+    chatContent.addClass('show')
+  }
 }
