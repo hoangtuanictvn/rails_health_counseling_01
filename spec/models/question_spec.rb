@@ -16,8 +16,11 @@ RSpec.describe Question, type: :model do
       expect(question.title.length).to be >= Settings.test.question.title_min
     end
   end
+  
   describe "associations" do
     it {should belong_to :user}
     it {should have_many :categories}
   end
+
+
 end
